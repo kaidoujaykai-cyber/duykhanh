@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio | Nguyễn Duy Khánh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e8f5e9, #f3e5f5);
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* HIỆU ỨNG GIỚI THIỆU */
+    .intro-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-box {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 35px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(232,245,233,0.95));
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+      animation: fadeZoom 1.5s ease;
+      position: relative;
+    }
+
+    .intro-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 25px;
+      padding: 3px;
+      background: linear-gradient(120deg, #00c853, #7c4dff, #00e5ff);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .intro-box p {
+      font-size: 18px;
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: #7c4dff;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      margin: 0 4px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #00c853, #00e5ff);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      margin: 2px 4px;
+      border-radius: 15px;
+      background: rgba(124,77,255,0.12);
+      color: #4a148c;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .intro-effect::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(124,77,255,0.15), transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .intro-effect p {
+      animation: fadeZoom 1.5s ease;
+    }
+
+    @keyframes fadeZoom {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #00e676; }
+      50% { box-shadow: 0 0 35px #00e676; }
+      100% { box-shadow: 0 0 10px #00e676; }
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f9d58, #1de9b6, #7c4dff);
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .avatar {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 6px solid white;
+      object-fit: cover;
+      animation: glow 3s infinite;
+      transition: transform 0.6s;
+    }
+
+    .avatar:hover { transform: scale(1.2) rotate(6deg); }
+
+    header h1 {
+      margin: 20px 0 10px;
+      letter-spacing: 3px;
+      font-size: 40px;
+      color: #ffffff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+
+    .slogan {
+      font-style: italic;
+      font-size: 18px;
+      color: #eafff3;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, #ffffff, #e8f5e9);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 12px;
+      margin: 0;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2e7d32;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      color: #7c4dff;
+      transform: scale(1.1);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 90px 20px;
+      animation: fadeUp 1s ease;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      background: linear-gradient(90deg, #00c853, #7c4dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #ffffff, #f1f8e9);
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      transition: transform 0.5s, box-shadow 0.5s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(124,77,255,0.15), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .timeline-item {
+      background: white;
+      padding: 25px;
+      border-left: 6px solid #7c4dff;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .skill { margin-bottom: 22px; }
+
+    .bar {
+      background: #ddd;
+      height: 14px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #00c853, #7c4dff);
+      width: 0;
+      animation: load 2s forwards;
+    }
+
+    @keyframes load { to { width: var(--level); } }
+
+    footer {
+      background: linear-gradient(135deg, #1b5e20, #4a148c);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .footer-social a {
+      display: inline-block;
+      margin: 12px;
+      padding: 12px 28px;
+      border-radius: 40px;
+      background: white;
+      color: #2e7d32;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s;
+    }
+
+    .footer-social a:hover {
+      background: #7c4dff;
+      color: white;
+      transform: translateY(-8px) scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+<header id="home">
+  <img src="bed623f109fc86a2dfed.jpg" class="avatar" alt="Nguyễn Duy Khánh">
+  <h1>NGUYỄN DUY KHÁNH</h1>
+  <p class="slogan">Kỷ luật – Nỗ lực – Không bỏ cuộc ⚽</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#home">Trang chủ</a></li>
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#activities">Hoạt động</a></li>
+    <li><a href="#timeline">Hành trình</a></li>
+    <li><a href="#skills">Kỹ năng</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<section id="about" class="intro-effect">
+  <h2>Giới thiệu bản thân</h2>
+  <div class="intro-box">
+    <p>
+      <span class="highlight">Mình là Nguyễn Duy Khánh</span>, hiện đang là học sinh lớp 
+      <span class="badge">12A1</span> – Trường <b>THCS-THPT Minh Hòa</b>.
+      Mình là người năng động, luôn cố gắng cân bằng giữa <span class="tag">học tập</span> 
+      và <span class="tag">thể thao</span>.
+    </p>
+    <p>
+      Ngay từ khi còn nhỏ, mình đã yêu thích <span class="highlight">công nghệ & máy tính</span>. 
+      Điều đó thôi thúc mình tự học <b>HTML, CSS</b> và từng bước xây dựng những 
+      <span class="tag">website cá nhân</span> cho riêng mình.
+    </p>
+    <p>
+      Ngoài học tập, mình rất đam mê <span class="highlight">bóng đá</span>. 
+      Thần tượng của mình là <b>Cristiano Ronaldo (CR7)</b> – người truyền cảm hứng 
+      về <span class="tag">kỷ luật</span>, <span class="tag">ý chí</span> 
+      và tinh thần <span class="tag">không bỏ cuộc</span>.
+    </p>
+  </div>
+</section>
+
+<section id="activities">
+  <h2>Hoạt động nổi bật</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="d7e02920062d8973d03c.jpg" alt="Lập trình" style="width:100%;border-radius:15px;margin-bottom:15px;">
+      <h3>💻 Lập trình Web</h3>
+      <p style="line-height:1.7;">
+        Mình bắt đầu học lập trình web từ những kiến thức cơ bản nhất như cấu trúc HTML, 
+        cách trang trí giao diện bằng CSS và tạo hiệu ứng sinh động cho website.
+        <br><br>
+        Hiện tại, mình đang tiếp tục tìm hiểu JavaScript để có thể tạo ra những trang web tương tác tốt hơn,
+        phục vụ cho học tập và các dự án cá nhân trong tương lai.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="da335987728afdd4a49b (1).jpg" alt="Bóng đá" style="width:100%;border-radius:15px;margin-bottom:15px;">
+      <h3>⚽ Bóng đá</h3>
+      <p style="line-height:1.7;">
+        Bóng đá là môn thể thao mình yêu thích nhất. Mình thường xuyên tham gia đá bóng cùng bạn bè 
+        để rèn luyện sức khỏe, tăng cường thể lực và giải tỏa căng thẳng sau những giờ học.
+        <br><br>
+        Qua bóng đá, mình học được tinh thần đồng đội, sự phối hợp và ý chí không bỏ cuộc khi gặp khó khăn.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="250b3bab17a698f8c1b7.jpg" alt="Học tập" style="width:100%;border-radius:15px;margin-bottom:15px;">
+      <h3>📘 Học tập</h3>
+      <p style="line-height:1.7;">
+        Việc học tập luôn được mình đặt lên hàng đầu. Trên lớp, mình cố gắng chú ý nghe giảng, 
+        hoàn thành đầy đủ bài tập và chủ động hỏi thầy cô khi chưa hiểu bài.
+        <br><br>
+        Ngoài thời gian học trên lớp, mình cũng tự học thêm qua sách và Internet để mở rộng kiến thức,
+        đặc biệt là các môn liên quan đến Tin học.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="23bdbb40954d1a13435c.jpg" alt="Phát triển bản thân" style="width:100%;border-radius:15px;margin-bottom:15px;">
+      <h3>🔥 Phát triển bản thân</h3>
+      <p style="line-height:1.7;">
+        Mình luôn cố gắng rèn luyện bản thân mỗi ngày, từ việc quản lý thời gian, 
+        xây dựng thói quen học tập tốt cho đến việc giữ tinh thần tích cực.
+        <br><br>
+        Lấy cảm hứng từ CR7, mình tin rằng chỉ cần đủ kỷ luật và nỗ lực,
+        mỗi người đều có thể cải thiện bản thân và tiến gần hơn tới mục tiêu của mình.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>Hành trình học tập</h2>
+  <div class="timeline">
+    <div class="timeline-item">2022 – Bắt đầu yêu thích Tin học</div>
+    <div class="timeline-item">2023 – Tự học HTML & CSS</div>
+    <div class="timeline-item">2024 – Làm website cá nhân đầu tiên</div>
+    <div class="timeline-item">2025 – Hoàn thiện portfolio cá nhân</div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Kỹ năng cá nhân</h2>
+  <div class="skill">HTML<div class="bar"><span style="--level:90%"></span></div></div>
+  <div class="skill">CSS<div class="bar"><span style="--level:80%"></span></div></div>
+  <div class="skill">JavaScript<div class="bar"><span style="--level:60%"></span></div></div>
+  <div class="skill">Làm việc nhóm<div class="bar"><span style="--level:85%"></span></div></div>
+</section>
+
+
+</footer>
+<section id="media">
+  <h2>Video & Âm thanh giới thiệu về wed</h2>
+
+  <!-- VIDEO -->
+  <div class="card" style="max-width:900px;margin:0 auto 40px;">
+    <h3>🎬 Video giới thiệu</h3>
+    <video controls width="100%" style="border-radius:15px;">
+      <source src="khanhvid.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+  </div>
+
+  <!-- AUDIO -->
+  <div class="card" style="max-width:900px;margin:0 auto;">
+    <h3>🎧 Audio: Rèn kỷ luật từ lập trình & bóng đá</h3>
+    <audio controls style="width:100%;">
+      <source src="khanhau.m4a" type="audio/mpeg">
+      Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+  </div>
+</section>
+<footer id="contact">
+    <h3> Thông tin liên hệ</h3>
+  <p>📧 nguyenduykhanh2kae@gmail.com</p>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/share/1ActpXXW1X/?mibextid=wwXIfr" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/isme_kh_qs/" target="_blank">Instagram</a
+</body>
+</html>
+>
+  </div>
+  <p>© 2025 | Portfolio Nguyễn Duy Khánh</p>
+  
